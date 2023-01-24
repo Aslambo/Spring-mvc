@@ -29,26 +29,26 @@ public class UserController {
         return "new";
     }
 
-    @GetMapping("/saveUser")
+    @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/";
     }
 
     @GetMapping("/editUser/{id}")
-    public String getFormToUpdateUser(Model model, @PathVariable("id") int id) {
+    public String getFormToUpdateUser(Model model, @PathVariable("id") Long id) {
         model.addAttribute("user", userService.getUser(id));
         return "edit";
     }
 
-    @GetMapping("/update/{id}")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") int id) {
+    @PostMapping("/update/{id}")
+    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
         userService.updateUser(id, user);
         return "redirect:/";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") int id) {
+    @PostMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return "redirect:/";
     }

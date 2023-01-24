@@ -5,7 +5,7 @@
     <title>New User</title>
 </head>
 <body>
-<form th:method="GET" th:action="saveUser" th:object="${user}">
+<form th:method="POST" th:action="saveUser" th:object="${user}">
 
     <label for="name">Enter Name:</label>
     <input name="name" type="text" id="name"/>
